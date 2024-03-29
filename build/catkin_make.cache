@@ -1,2 +1,2 @@
-gazebo_sim_pkg:pub_sub:robot_setup_tf:rviz_sim_pkg
+gazebo_sim_pkg:pub_sub:rviz_sim_pkg
 -DCATKIN_DEVEL_PREFIX=/home/ubuntu/senior_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ubuntu/senior_ws/install -G Unix Makefiles
