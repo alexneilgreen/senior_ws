@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <gazebo reference="chassis_base_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+    </gazebo>
+    
+    <gazebo reference="back_left_wheel">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+    </gazebo>
+
+    <gazebo reference="front_left_wheel">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+    </gazebo>
+
+    <gazebo reference="back_right_wheel">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+    </gazebo>
+
+    <gazebo reference="front_right_wheel">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+
+            <!-- Control Update rate in Hz -->
+            <updateRate>100.0</updateRate>
+
+            <robotNamespace></robotNamespace>
+
+            <!-- Robot Kinematics -->
+            <leftRearJoint>back_left_wheel_joint</leftRearJoint>
+            <leftFrontJoint>front_left_wheel_joint</leftFrontJoint>
+            <rightRearJoint>back_right_wheel_joint</rightRearJoint>
+            <rightFrontJoint>front_right_wheel_joint</rightFrontJoint>
+            <wheel_separation>0.2286</wheel_separation>
+            <wheel_diameter>0.1524</wheel_diameter>
+
+
+            <!-- Limits -->
+            <torque>200</torque>
+
+            <!-- Output and Topics -->
+            <!-- Topic to recieve geometry_msgs/Twist message commands, defaults to 'cmd_vel' -->
+            <commandTopic>cmd_vel</commandTopic>
+            <!-- Topic to publish nav_msgs/Odometry messages, defaults to 'cmd_vel' -->
+            <odometryTopic>odom</odometryTopic>
+            <!-- Odometry frame, defaults to 'odom' -->
+            <odometryFrame>odom</odometryFrame>
+            <!-- Robot frame to calculate odometry from, defaults to 'base_footprint', 'dummy' in example -->
+            <robotBaseFrame>base_link</robotBaseFrame>
+            <!-- Set to true to publish transforms for the wheel links, defaults to 'false' -->
+            <publishWheelTF>true</publishWheelTF>
+            <!-- Set to true to publish transforms for the odometry, defaults to 'true' -->
+            <publishOdom>true</publishOdom>
+            <!-- Set to true to publish sensor_msgs/JointState on /joint_states for the wheel joints, defaults to 'false' -->
+            <publishWheelJointState>true</publishWheelJointState>
+            
+            <!-- This part is required by Gazebo -->
+            <covarience_x>0.0001</covarience_x>
+            <covarience_y>0.0001</covarience_y>
+            <covarience_yaw>0.01</covarience_yaw>
+
+
+            <publishOdomTF>true</publishOdomTF>
+
+        </plugin>
+    </gazebo>
+
+
+</robot>

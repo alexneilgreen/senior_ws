@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<launch>
+
+    <arg name="model" />
+    <param name="robot_description" textfile="$(find rviz_sim_pkg)/urdf/robot.urdf" />
+
+    <!-- Publishes GUI for you to move non-fixed joints -->
+    <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+    <!-- Updates joints -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    <!-- This is to launch RViz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find rviz_sim_pkg)/config/robot.rviz" required="true" />
+
+</launch>

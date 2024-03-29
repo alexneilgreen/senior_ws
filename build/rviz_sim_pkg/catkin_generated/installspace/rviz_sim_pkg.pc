@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/senior_ws/install
+
+Name: rviz_sim_pkg
+Description: Description of rviz_sim_pkg
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

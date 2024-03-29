@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<launch>
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="paused" value="false" />
+        <arg name="use_sim_time" value="true" />
+        <arg name="gui" value="true" />
+        <arg name="headless" value="true" />
+        <arg name="debug" value="false" />
+    </include>
+
+    <!-- Load the robot description -->
+    <param name="robot_description" command="$(find xacro)/xacro '$(find gazebo_sim_pkg)/description/robot.urdf.xacro'" />
+    <!-- Robot state publisher node -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+    <!-- Spawn the model, example name was 'urdf_spanwer'-->
+    <node name="RAPID_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model robot_model -param robot_description" />
+
+
+
+    <!-- Publishes GUI for you to move non-fixed joints -->
+    <!-- <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" /> -->
+    <!-- This is to launch RViz -->
+    <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find gazebo_sim_pkg)/config/robot.rviz" required="true" /> -->
+
+</launch>

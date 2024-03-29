@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
+
+    <xacro:include filename="robot_core.xacro" />
+
+    <!-- Include file that defines extra Gazebo options and motion control driver -->
+    <xacro:include filename="robot.gazebo" />
+
+    <xacro:include filename="lidar.xacro" />
+
+    <xacro:include filename="front_camera.xacro" />
+    <xacro:include filename="rear_camera.xacro" />
+
+</robot>
